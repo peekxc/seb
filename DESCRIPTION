@@ -1,0 +1,17 @@
+Package: seb
+Type: Package
+Title: Computes the Smallest Enclosing Ball (SEB) of a point set  
+Version: 0.9
+Date: 2021-05-03
+Authors@R: 
+	c(person("Matt", "Piekenbrock", role = c("aut", "cre", "trl"), email = "matt.piekenbrock@gmail.com"), 
+		person("Martin", "Kutz", role = "cph"),
+		person("Kaspar", "Fischer", role = "cph"),
+		person("Bernd", "Gartner", role = "cph")) 
+Maintainer: Matt Piekenbrock <matt.piekenbrock@gmail.com>
+Description: This packages provides an interface to computing the Smallest Enclosing Ball (SEB) of a point set (also called the miniball).
+License: Apache License (>= 2.0)
+Imports: Rcpp (>= 1.0.6)
+LinkingTo: Rcpp
+RoxygenNote: 7.1.1
+Encoding: UTF-8
