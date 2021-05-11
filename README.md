@@ -11,15 +11,12 @@ Some quick benchmarks using [microbenchmark](https://cran.r-project.org/web/pack
 
 ```R
 library(microbenchmark) 
+setup_expr <- quote({ x <- replicate(n = d, expr = rnorm(1500)) })
 avg_ms <- sapply(2:15, function(d) {
-	bench <- microbenchmark(
-		{ seb::seb(x) }, 
-    times = 100L, 
-		setup = { x = replicate(n = d, expr = rnorm(1500)) }
-	)
+  bench <- microbenchmark({ seb::seb(x) }, times = 100L, setup = eval(setup_expr))
   mean(bench$time) * 1e-6 ## milliseconds
 })
-> cat(sprintf("dim=%d, n=1500 took %.2g milliseconds\n", 2:15, avg_ms))
+cat(sprintf("dim=%d, n=1500 took %.2g milliseconds\n", 2:15, avg_ms))
 # dim=2, n=1500 took 0.45 milliseconds
 # dim=3, n=1500 took 0.49 milliseconds
 # dim=4, n=1500 took 0.49 milliseconds
